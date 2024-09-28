@@ -1,0 +1,16 @@
+from tkinter import *
+
+#creating window
+w=Tk()
+#increasing window size
+w.geometry("1000x1000")
+
+#adding a button
+b=Button(w,text="Close",command=w.destroy)
+b.pack(side="left")
+
+
+
+
+#display window
+w.mainloop()
