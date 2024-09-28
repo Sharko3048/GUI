@@ -1,0 +1,21 @@
+from tkinter import *
+w=Tk()
+w.geometry("500x500")
+w.title("Login")
+w.config(background="navy")
+u=Label(w,text="Username",bg="navy",fg="white")
+u.place(x=100,y=100)
+ub=Entry(w,bg="white")
+ub.place(x=200,y=100)
+p=Label(w,text="Password",bg="navy",fg="white")
+p.place(x=100,y=150)
+pb=Entry(w,bg="white",show="*")
+pb.place(x=200,y=150)
+
+loginb=Button(w,text="Login")
+loginb.place(x=200,y=200)
+
+
+
+
+w.mainloop()
