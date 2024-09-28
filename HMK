@@ -1,0 +1,17 @@
+from tkinter import *
+w=Tk()
+w.geometry("500x500")
+w.title("Calendar")
+w.config(bg="Light Blue")
+c=Label(w,text="CALENDAR",bg="red",fg="White",height=2,width=25)
+c.place(x=140,y=10)
+e=Label(w,text="Enter Year:",bg="navy",fg="White",height=1,width=15)
+e.place(x=185,y=50)
+cb=Entry(w,bg="white")
+cb.place(x=157.5,y=75)
+ey=Button(w,text="Calendar Year")
+ey.place(x=192.5,y=105)
+e=Button(w,text="EXIT",command=w.destroy)
+e.place(x=225,y=140)
+
+w.mainloop()
