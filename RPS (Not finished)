@@ -2,7 +2,21 @@ from tkinter import *
 import random
 import tkinter.font as ft
 
+ob=["Rock","Paper","Scissors"]
 def game(playerchoice):
+    c=random.choice(ob)
+    if (playerchoice == "Rock" and c == "Scissors") or (playerchoice == "Paper" and c == "Rock") or (playerchoice == "Scissors" and c == "Paper"):
+        winner_definer.config(text="You won!!!")
+        
+    elif (playerchoice == "Scissors" and c == "Rock") or (playerchoice == "Rock" and c == "Paper") or (playerchoice == "Paper" and c == "Scissors"):
+        winner_definer.config(text="You lost :(")
+    else:
+        winner_definer.config(text="Draw!")
+
+    ys.config(text="You selected: "+playerchoice)
+    cs.config(text="Computer selected: "+c)
+
+    
 
 
 
@@ -12,9 +26,9 @@ f2=ft.Font(family="Comic Sans MS",size=11)
 w.geometry("600x600")
 w.config(bg="Light Blue")
 w.title("Rock, Paper, Scissors Game")
-title=Label(w,text="Rock Paper Scissors",font=f,bg="Light Blue")
+title=Label(w,text="Rock Paper Scissors",font=f,bg="Light blue")
 title.pack(side=TOP)
-winner_definer=Label(w,font=f2,bg="Light Blue")
+winner_definer=Label(w,text="",font=f2,bg="Light Blue")
 winner_definer.pack(side=TOP)
 
 #frame 1
@@ -23,11 +37,11 @@ fr1.pack(side=TOP)
 yo=Label(fr1,text="Your Options:",font=f2,bg="Light Blue")
 yo.grid(row=1,column=1)
 
-r=Button(fr1,text="Rock",font=f2,bg="pink")
+r=Button(fr1,text="Rock",font=f2,highlightbackground="pink",command=lambda: game(ob[0]))
 r.grid(row=2,column=2)
-p=Button(fr1,text="Paper",font=f2,bg="grey")
+p=Button(fr1,text="Paper",font=f2,highlightbackground="Light grey",command=lambda: game(ob[1]))
 p.grid(row=2,column=3)
-s=Button(fr1,text="Scissors",font=f2,bg="blue")
+s=Button(fr1,text="Scissors",font=f2,highlightbackground="#65dcf4",command=lambda: game(ob[2]))
 s.grid(row=2,column=4)
 
 
