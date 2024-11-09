@@ -2,19 +2,27 @@ from tkinter import *
 import random
 import tkinter.font as ft
 
+pscore=0
+cscore=0
 ob=["Rock","Paper","Scissors"]
 def game(playerchoice):
+    global pscore,cscore
     c=random.choice(ob)
     if (playerchoice == "Rock" and c == "Scissors") or (playerchoice == "Paper" and c == "Rock") or (playerchoice == "Scissors" and c == "Paper"):
         winner_definer.config(text="You won!!!")
+        pscore+=1
+        
         
     elif (playerchoice == "Scissors" and c == "Rock") or (playerchoice == "Rock" and c == "Paper") or (playerchoice == "Paper" and c == "Scissors"):
         winner_definer.config(text="You lost :(")
+        cscore+=1
     else:
         winner_definer.config(text="Draw!")
 
     ys.config(text="You selected: "+playerchoice)
     cs.config(text="Computer selected: "+c)
+    ps.config(text=f" Player Score: {pscore}")
+    csc.config(text=f"Computer Score: {cscore}")
 
     
 
