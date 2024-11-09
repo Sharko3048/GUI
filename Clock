@@ -1,0 +1,19 @@
+from tkinter import *
+from time import strftime as s
+w=Tk()
+
+w.geometry("500x500")
+w.config(bg="Light Blue")
+w.title("Clock")
+
+c=Label(w,text="JEJ",bg="Yellow",font=("Comic Sans MS",30))
+c.pack(side=TOP)
+
+def clock():
+    t=s("%H:%M:%S")
+    c.config(text=t)
+    c.after(1000,clock)
+
+
+clock()
+w.mainloop()
