@@ -1,0 +1,43 @@
+from tkinter import *
+from tkinter import messagebox as m
+
+w=Tk()
+w.geometry("500x500")
+#testing out stuff
+def t():
+    m.showerror("Lol","Error-wifi isn't wifying-")
+
+def war():
+    m.showwarning("w","WARNING DO NOT CONTINUE")
+
+def inf():
+    m.showinfo("w","FoR yOuR InFoRmAtIoN yOu JuSt wAsTeD YoUr tImE")
+
+b=Button(w,text="Error", command=t)
+b.pack(side=TOP)
+
+wa=Button(w,text="WARNING",command=war)
+wa.pack(side=TOP)
+
+i=Button(w,text="InFo",command=inf)
+i.pack(side=TOP)
+
+
+#user responds to the message
+uno=m.askquestion("1st","Are you human?")
+
+if uno=="yes":
+    dos1=m.askyesno("2nd","Are you sure??")
+    print(dos1)
+
+else:
+    dos2=m.askyesno(".","Ok so, does that mean you are a computer?")
+    print(dos2)
+
+test=m.askokcancel(".","Noooo u wanna exit the game??")
+print(test)
+
+while True:
+    test2=m.askretrycancel(".","...")
+    print(test2)
+w.mainloop()
