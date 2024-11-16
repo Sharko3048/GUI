@@ -1,0 +1,25 @@
+from tkinter import *
+from tkinter import messagebox as m
+from random import randint
+
+def ok():
+    m.showinfo("","Hello "+n.get()+" I'm thinking of a number between 1-1000, can you guess?")
+    f.pack_forget()
+
+
+w=Tk()
+w.geometry("500x500")
+w.title("Guess my number")
+f=Frame(w)
+f.pack(side=TOP)
+welc=Label(f,text="Welcome to the Game!!")
+name=Label(f,text="Type your name here")
+n=Entry(f)
+ok=Button(f,text="OK",command=ok)
+
+welc.pack(side=TOP)
+name.pack(side=TOP)
+n.pack(side=TOP)
+ok.pack(side=TOP)
+
+w.mainloop()
