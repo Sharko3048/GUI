@@ -1,0 +1,20 @@
+from tkinter import *
+w=Tk()
+w.geometry("500x500")
+w.title("List")
+f=Frame(w)
+f.pack(side=TOP)
+s=Scrollbar(f)
+s.pack(side=RIGHT,fill=Y)
+lbox=Listbox(f,border=0,highlightthickness=5,highlightbackground="grey",yscrollcommand=s.set)
+lbox.pack(side=LEFT)
+    
+for i in range(10000):
+ lbox.insert(i,"apple"+str(i+1))
+
+s.config(command=lbox.yview)
+
+
+
+
+w.mainloop()
