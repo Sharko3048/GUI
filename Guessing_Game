@@ -2,9 +2,25 @@ from tkinter import *
 from tkinter import messagebox as m
 from random import randint
 
+number=randint(1,1000)
+
 def ok():
     m.showinfo("","Hello "+n.get()+" I'm thinking of a number between 1-1000, can you guess?")
     f.pack_forget()
+    f2.pack(side=TOP)
+
+def guess():
+    pnumber=int(num.get())
+    if pnumber < number:
+        m.showinfo("","Too low, try a bigger number")
+    elif pnumber > number:
+        m.showinfo("","Too high, try a smaller number")
+    else:
+        m.showinfo("",f"YESS, YOU GOT IT, MY NUMBER IS {number} !!")
+        exit()
+
+
+
 
 
 w=Tk()
@@ -21,5 +37,14 @@ welc.pack(side=TOP)
 name.pack(side=TOP)
 n.pack(side=TOP)
 ok.pack(side=TOP)
+
+f2=Frame(w)
+t=Label(f2,text="Type your number here:")
+t.pack(side=LEFT)
+num=Entry(f2)
+num.pack(side=LEFT)
+guess=Button(f2,text="Guess",command=guess)
+guess.pack(side=LEFT)
+
 
 w.mainloop()
