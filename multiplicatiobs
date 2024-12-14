@@ -1,0 +1,48 @@
+from tkinter import *
+from tkinter.ttk import *
+w=Tk()
+
+w.geometry("500x500")
+w.title("Multiplication")
+m=Label(w,text="Mathematical table")
+m.pack(side=TOP)
+f=Frame(w)
+f.pack(side=TOP)
+nandr=Label(f,text="Number and Range: ")
+nandr.pack(side=LEFT)
+v=IntVar()
+c=Combobox(f,textvariable=v,values=list(range(0,1000)))
+v.set(0)
+c.pack(side=LEFT)
+
+def getans():
+    typenumb=v.get()
+    sidenumb=vrs.get()
+    table=""
+    for i in range(1,sidenumb):
+        answer=typenumb*i
+        table=table+str(typenumb)+"x"+str(i)+"="+str(answer)+"\n"
+    ans.config(table)
+    ans.pack(side=TOP)
+
+
+
+vrs=IntVar()
+f2=Frame(f)
+f2.pack(side=RIGHT)
+ten=Radiobutton(f2,text="10",value=10,variable=vrs)
+twen=Radiobutton(f2,text="20",value=20,variable=vrs)
+thir=Radiobutton(f2,text="30",value=30,variable=vrs)
+vrs.set(10)
+ten.pack(side=TOP)
+twen.pack(side=TOP)
+thir.pack(side=TOP)
+g=Button(w,text="Generate",command=getans)
+g.pack(side=TOP)
+ans=Label(w)
+
+
+
+
+
+w.mainloop()
