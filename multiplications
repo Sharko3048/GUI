@@ -19,10 +19,10 @@ def getans():
     typenumb=v.get()
     sidenumb=vrs.get()
     table=""
-    for i in range(1,sidenumb):
+    for i in range(1,sidenumb+1):
         answer=typenumb*i
         table=table+str(typenumb)+"x"+str(i)+"="+str(answer)+"\n"
-    ans.config(table)
+    ans.config(text=table)
     ans.pack(side=TOP)
 
 
@@ -37,9 +37,10 @@ vrs.set(10)
 ten.pack(side=TOP)
 twen.pack(side=TOP)
 thir.pack(side=TOP)
+ans=Label(w)
 g=Button(w,text="Generate",command=getans)
 g.pack(side=TOP)
-ans=Label(w)
+
 
 
 
