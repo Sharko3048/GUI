@@ -1,0 +1,49 @@
+from tkinter import *
+
+w=Tk()
+w.geometry("500x500")
+w.title("Weight Converter")
+f=Frame(w)
+f.pack(side=TOP)
+
+gram=0
+pounds=0
+ounces=0
+
+def con():
+    num=int(we.get())
+    gram=num*1000
+    pounds=num*2.20462
+    ounces=num*35.274
+    ga.config(text=gram)
+    pa.config(text=pounds)
+    oa.config(text=ounces)
+
+
+
+e=Label(f,text="Enter weight in Kg")
+e.pack(side=LEFT)
+we=Entry(f)
+we.pack(side=LEFT)
+c=Button(f,text="Convert",command=con)
+c.pack(side=LEFT)
+
+f2=Frame()
+f2.pack(side=TOP)
+g=Label(f2,text="Gram")
+g.grid(row=1,column=1,padx=20)
+p=Label(f2,text="Pounds")
+p.grid(row=1,column=2,padx=20)
+o=Label(f2,text="Ounce")
+o.grid(row=1,column=3,padx=20)
+
+ga=Label(f2)
+ga.grid(row=2,column=1,padx=20)
+pa=Label(f2)
+pa.grid(row=2,column=2,padx=20)
+oa=Label(f2)
+oa.grid(row=2,column=3,padx=20)
+
+
+
+w.mainloop()
