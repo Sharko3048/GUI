@@ -1,0 +1,28 @@
+from tkinter import *
+from tkinter.filedialog import askopenfile as aof
+from tkinter.filedialog import asksaveasfile as asaf
+
+w=Tk()
+w.title("Files")
+w.geometry("500x500")
+
+def o():
+    f=aof(filetypes=[('Python Files', '*.py'),
+            ('Text Document', '*.txt')])
+    if f is not None:
+        print(f.read())
+
+def s():
+    sf=asaf()
+    
+
+
+
+open=Button(w,text="Open",command=o)
+open.pack(side=TOP)
+save=Button(w,text="Save",command=s)
+save.pack(side=TOP)
+
+
+
+w.mainloop()
