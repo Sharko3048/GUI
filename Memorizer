@@ -1,0 +1,61 @@
+from tkinter import *
+from tkinter.filedialog import askopenfile as aof
+from tkinter.filedialog import asksaveasfile as asaf
+
+w=Tk()
+w.title("Memorizer")
+w.geometry("450x300")
+
+def save():
+    sf=asaf()
+    if sf:
+        for item in lbox.get(0,END):
+            print(item,file=sf)
+        lbox.delete(0,END)
+
+def add():
+    v=ec.get()
+    lbox.insert(END,v)
+    ec.delete(0,END)
+
+def op():
+    f=aof(filetypes=[('Text Document', '*.txt')])
+    if f is not None:
+        lbox.delete(0,END)
+        l=f.readlines()
+        for i in l:
+            lbox.insert(END,i)
+
+def delet():
+    si=lbox.curselection()
+    if si:
+        lbox.delete(si)
+
+f=Frame()
+f.pack(side=TOP)
+s=Button(w,text="SAVE",command=save)
+s.pack(side=TOP)
+ec=Entry(w)
+ec.pack(side=TOP)
+a=Button(w,text="ADD",command=add)
+a.pack(side=TOP)
+
+s=Scrollbar(f)
+lbox=Listbox(f,yscrollcommand=s.set)
+lbox.pack(side=LEFT)
+s.pack(side=RIGHT,fill=Y)
+s.config(command=lbox.yview)
+
+for i in range (20):
+    lbox.insert(i,"LIST"+str(i+1))
+
+o=Button(w,text="OPEN",command=op)
+o.pack(side=LEFT)
+d=Button(w,text="DELETE",command=delet)
+d.pack(side=RIGHT)
+c=Button(w,text="CLOSE",command=w.destroy)
+c.pack(side=BOTTOM)
+
+
+
+w.mainloop()
