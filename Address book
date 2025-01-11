@@ -1,0 +1,92 @@
+from tkinter import *
+from tkinter.filedialog import askopenfile as aof
+from tkinter.filedialog import asksaveasfile as asaf
+from tkinter import messagebox as m
+
+w=Tk()
+w.title("Address")
+w.geometry("500x500")
+dictionary={}
+
+def clear_entry():
+  ne.delete(0,END)
+  ae.delete(0,END) 
+  me.delete(0,END) 
+  ee.delete(0,END) 
+  be.delete(0,END)   
+
+def ADD():
+    personname=ne.get()
+    if personname == "":
+        m.showinfo("","You have to enter a name, it can't be empty.")
+    else:
+        if personname not in dictionary:
+            lbox.insert(END,personname)
+        dictionary[personname]=[ae.get(),me.get(),ee.get(),be.get()]
+    clear_entry()
+
+
+
+
+
+o=Button(w,text="Open")
+o.pack(side=TOP)
+
+f=Frame(w)
+f.pack(side=TOP)
+
+#labels
+n=Label(f,text="Name:")
+n.grid(row=2,column=1)
+a=Label(f,text="Address:")
+a.grid(row=3,column=1)
+m=Label(f,text="Mobile:")
+m.grid(row=4,column=1)
+e=Label(f,text="Email:")
+e.grid(row=5,column=1)
+b=Label(f,text="Birthday:")
+b.grid(row=6,column=1)
+
+#Entry boxes +add button
+ne=Entry(f)
+ne.grid(row=2,column=2,columnspan=2)
+ae=Entry(f)
+ae.grid(row=3,column=2,columnspan=2)
+me=Entry(f)
+me.grid(row=4,column=2,columnspan=2)
+ee=Entry(f)
+ee.grid(row=5,column=2,columnspan=2)
+be=Entry(f)
+be.grid(row=6,column=2,columnspan=2)
+updateb=Button(f,text="Update/Add",command=ADD)
+updateb.grid(row=4,column=4)
+
+#file name
+fn=Label(w)
+fn.pack(side=TOP)
+
+#Listbox and scroll button
+f2=Frame(w)
+f2.pack(side=TOP)
+s=Scrollbar(f2)
+lbox=Listbox(f2,yscrollcommand=s.set)
+lbox.pack(side=LEFT)
+s.pack(side=LEFT)
+s.config(command=lbox.yview)
+
+#Edit and delete buttons
+f3=Frame(w)
+f3.pack(side=TOP)
+editb=Button(f3,text="Edit")
+editb.pack(side=LEFT)
+deleteb=Button(f3,text="Delete")
+deleteb.pack(side=LEFT)
+
+#Save button
+saveb=Button(w,text="SAVE",width=25)
+saveb.pack(side=BOTTOM)
+
+
+
+
+w.mainloop()
