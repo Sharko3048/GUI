@@ -1,7 +1,7 @@
-from tkinter import *
+sfrom tkinter import *
 from tkinter.filedialog import askopenfile as aof
 from tkinter.filedialog import asksaveasfile as asaf
-from tkinter import messagebox as m
+from tkinter import messagebox as message
 
 w=Tk()
 w.title("Address")
@@ -18,7 +18,7 @@ def clear_entry():
 def ADD():
     personname=ne.get()
     if personname == "":
-        m.showinfo("","You have to enter a name, it can't be empty.")
+        message.showinfo("","You have to enter a name, it can't be empty.")
     else:
         if personname not in dictionary:
             lbox.insert(END,personname)
