@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter.filedialog import askopenfile as aof
 from tkinter.filedialog import asksaveasfile as asaf
 from tkinter import messagebox as message
+import os
 
 w=Tk()
 w.title("Address Book")
@@ -32,9 +33,19 @@ def click(e):
     picked=lbox.curselection()
     selectedname=lbox.get(picked)
     details=dictionary.get(selectedname)
+    print(picked)
+    print(selectedname)
+    print(details)
     presented_details="Name:"+selectedname+"\n\nAddress:"+details[0]+"\n\nMobile:"+details[1]+"\n\nEmail:"+details[2]+"\n\nBirthday:"+details[3]
+    print(presented_details)
     finaldetails=Label(finfo,text=presented_details)
     finaldetails.pack(side=TOP)
+
+def reset():
+    clear_entry()
+    lbox.delete(0,END)
+    dictionary.clear()
+
 
 def save():
     sf=asaf()
@@ -46,12 +57,36 @@ def delet():
     if chosen:
         lbox.delete(chosen)
 
+def open():
+    reset()
+    f=aof(filetypes=[('Text Document','*.txt')])
+    if f is not None:
+        dictionary=eval(f.read())
+        print(dictionary)
+        for key in dictionary:
+            lbox.insert(END,key)
+        test.config(text=os.path.basename(f.name))
+
+def edit():
+    gonedit=lbox.curselection()
+    nameee=lbox.get(gonedit)
+    goneditdetailss=dictionary.get(nameee)
+    ne.insert(0,nameee)
+    ae.insert(0,goneditdetailss[0])
+    me.insert(0,goneditdetailss[1])
+    ee.insert(0,goneditdetailss[2])
+    be.insert(0,goneditdetailss[3])
+
+            
 
 
 
 
 
-o=Button(w,text="Open")
+
+o=Button(w,text="Open",command=open)
+test=Label(w,text="")
+test.pack(side=TOP)
 o.pack(side=TOP)
 
 f=Frame(w)
@@ -100,7 +135,7 @@ s.config(command=lbox.yview)
 #Edit and delete buttons
 f3=Frame(w)
 f3.pack(side=TOP)
-editb=Button(f3,text="Edit")
+editb=Button(f3,text="Edit",command=edit)
 editb.pack(side=LEFT)
 deleteb=Button(f3,text="Delete",command=delet)
 deleteb.pack(side=LEFT)
