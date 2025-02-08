@@ -1,0 +1,25 @@
+from tkinter import *
+from gtts import gTTS as ts
+import os
+
+w=Tk()
+w.geometry("500x500")
+w.title("Text to Speech")
+l=Label(w,text="Text to Speech")
+l.pack(side=TOP)
+persontext=Entry(w)
+persontext.pack(side=TOP)
+
+def texttospeech():
+    ans=ts(persontext.get(),lang="en")
+    filenamee="pythonaudio.wav"
+    #ans.save(filenamee)
+    #os.system(filenamee)
+
+submit=Button(w,text="Submit",command=texttospeech)
+submit.pack(side=TOP)
+
+
+
+
+w.mainloop()
