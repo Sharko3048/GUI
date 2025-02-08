@@ -1,0 +1,34 @@
+from tkinter import *
+import speech_recognition as sr
+from tkinter import messagebox as message
+
+w=Tk()
+w.geometry("500x500")
+w.title("Speech to Text")
+
+def stot():
+    r=sr.Recognizer()
+    with sr.Microphone() as mike:
+        audio=r.listen(mike)
+        try:
+            text=r.recognize_google(audio)
+            et.insert(END,text)
+        except:
+            message.showerror("Sorry I didn't understand \n Try Again")
+            
+
+l=Label(w,text="Voice Notepad")
+l.pack(side=TOP)
+f=Frame(w)
+rec=Button(f,text="Click on me \n To start recording",command=stot)
+f.pack(side=TOP)
+rec.pack(side=LEFT)
+et=Text(f,height=5,width=25)
+et.pack(side=LEFT)
+savetextb=Button(f,text="Save the Text")
+savetextb.pack(side=LEFT)
+f.pack(side=TOP)
+
+
+
+w.mainloop()
