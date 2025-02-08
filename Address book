@@ -58,6 +58,7 @@ def delet():
         lbox.delete(chosen)
 
 def open():
+    global dictionary
     reset()
     f=aof(filetypes=[('Text Document','*.txt')])
     if f is not None:
