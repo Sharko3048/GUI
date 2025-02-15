@@ -1,0 +1,45 @@
+from tkinter import *
+from tkinter import messagebox as m
+import random
+
+w=Tk()
+w.geometry("500x300")
+w.title("Game")
+
+l=Label(w,text="Unjumble the Words!")
+l.pack(side=TOP)
+
+word_list=["load","pipe","monopoly","banana","heavy","scale","portion","anxiety","circumstance","deputy","detective"]
+
+
+def play_game():
+    random_word=random.choice(word_list)
+    random_word_list=list(random_word)
+    random.shuffle(random_word_list)
+    jumbled_word="".join(random_word_list)
+    word.config(text=jumbled_word)
+
+
+def check():
+    inside_entry=e.get()
+    if inside_entry == "":
+        m.showinfo("","You have to put something in the box")
+    
+
+
+
+word=Label(w,text="")
+word.pack(side=TOP)
+e=Entry(w)
+e.pack(side=TOP)
+c=Button(w,text="Check",command=check)
+c.pack(side=TOP)
+r=Button(w,text="Reset")
+r.pack(side=TOP)
+
+s=Label(w,text="1/1")
+s.pack(side=BOTTOM)
+
+play_game()
+
+w.mainloop()
