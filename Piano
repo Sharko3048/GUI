@@ -1,0 +1,15 @@
+from tkinter import *
+from playsound3 import playsound
+
+w=Tk()
+w.geometry("1000x1000")
+w.title("Piano")
+
+def audio(n):
+    playsound(f"{n}.wav")
+
+
+a=Button(w,text="a",command=lambda:audio("A"))
+a.pack(side=TOP)
+
+w.mainloop()
