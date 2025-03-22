@@ -10,9 +10,12 @@ l=Label(w,text="Unjumble the Words!")
 l.pack(side=TOP)
 
 word_list=["load","pipe","monopoly","banana","heavy","scale","portion","anxiety","circumstance","deputy","detective"]
-
-
+random_word=""
+attempts=3
 def play_game():
+    global attempts
+    attempts=3
+    global random_word
     random_word=random.choice(word_list)
     random_word_list=list(random_word)
     random.shuffle(random_word_list)
@@ -21,9 +24,20 @@ def play_game():
 
 
 def check():
+    global attempts
     inside_entry=e.get()
-    if inside_entry == "":
-        m.showinfo("","You have to put something in the box")
+    if attempts > 1:
+        attempts-=1
+        if inside_entry == "":
+            m.showinfo("",f"You have to put something in the box, you have {attempts} attempts remaining")
+        elif inside_entry == random_word:
+            m.showinfo("","Correct!")
+            play_game()
+        else:
+            m.showwarning("",f"Wrong! Try again,you have {attempts} attempts remaining")
+    else:
+        m.showerror("","Sorry, you have run out of attempts")
+        play_game()
     
 
 
