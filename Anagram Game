@@ -5,9 +5,17 @@ import random
 w=Tk()
 w.geometry("500x300")
 w.title("Game")
+trys=0
+score=0
 
 l=Label(w,text="Unjumble the Words!")
 l.pack(side=TOP)
+
+def amount_of_times_tried():
+    global tries
+    if trys==10:
+        m.showinfo("",f"The game has ended! You score is {s}/{tries}")
+
 
 word_list=["load","pipe","monopoly","banana","heavy","scale","portion","anxiety","circumstance","deputy","detective"]
 random_word=""
@@ -24,7 +32,7 @@ def play_game():
 
 
 def check():
-    global attempts
+    global attempts,s,tries,trys,score
     inside_entry=e.get()
     if attempts > 1:
         attempts-=1
@@ -32,11 +40,17 @@ def check():
             m.showinfo("",f"You have to put something in the box, you have {attempts} attempts remaining")
         elif inside_entry == random_word:
             m.showinfo("","Correct!")
+            score+=1
+            trys+=1
+            s.config(text=score)
+            tries.config(text=trys)
             play_game()
         else:
             m.showwarning("",f"Wrong! Try again,you have {attempts} attempts remaining")
     else:
         m.showerror("","Sorry, you have run out of attempts")
+        trys+=1
+        tries.config(text=trys)
         play_game()
     
 
@@ -51,8 +65,14 @@ c.pack(side=TOP)
 r=Button(w,text="Reset")
 r.pack(side=TOP)
 
-s=Label(w,text="1/1")
-s.pack(side=BOTTOM)
+f=Frame(w)
+f.pack(side=BOTTOM)
+s=Label(f,text=score)
+s.pack(side=LEFT)
+slash=Label(f,text="/")
+slash.pack(side=LEFT)
+tries=Label(f,text=trys)
+tries.pack(side=LEFT)
 
 play_game()
 
