@@ -4,6 +4,7 @@ from playsound3 import playsound
 w=Tk()
 w.geometry("1000x1000")
 w.title("Piano")
+w.config(background="#947A54")
 
 def audio(n):
     playsound(f"Music/{n}.wav",block=False)
@@ -12,58 +13,72 @@ def audioo(n):
     playsound(f"Music/{n}.mp3",block=False)
 
 
-f2=Frame(w)
+f2=Frame(w, background="#947A54")
 f2.pack(side=TOP)
 
-c=Button(f2,text="c",command=lambda:audio("C"))
+decor=Button(f2,height=5,width=65,highlightbackground="#947A54")
+decor.grid(row=1,column=1,columnspan=11)
+
+#c
+c=Button(f2,height=7,width=2,command=lambda:audio("C"))
 c.grid(row=2,column=1)
-c_sharp=Button(f2,text="cs",command=lambda:audio("CS"))
-c_sharp.grid(row=1,column=1,columnspan=2)
-
-d=Button(f2,text="d",command=lambda:audio("D"))
+#d
+d=Button(f2,height=7,width=2,command=lambda:audio("D"))
 d.grid(row=2,column=2)
-d_sharp=Button(f2,text="ds",command=lambda:audio("DS"))
-d_sharp.grid(row=1,column=2,columnspan=2)
-
-e=Button(f2,text="e",command=lambda:audio("E"))
+#e
+e=Button(f2,height=7,width=2,command=lambda:audio("E"))
 e.grid(row=2,column=3)
 
-fnote=Button(f2,text="f",command=lambda:audio("F"))
+#f
+fnote=Button(f2,height=7,width=2,command=lambda:audio("F"))
 fnote.grid(row=2,column=4)
-f_sharp=Button(f2,text="fs",command=lambda:audio("FS"))
-f_sharp.grid(row=1,column=4,columnspan=2)
-
-g=Button(f2,text="g",command=lambda:audio("G"))
+#g
+g=Button(f2,height=7,width=2,command=lambda:audio("G"))
 g.grid(row=2,column=5)
-g_sharp=Button(f2,text="gs",command=lambda:audio("GS"))
-g_sharp.grid(row=1,column=5,columnspan=2)
-
-a=Button(f2,text="a",command=lambda:audio("A"))
+#a
+a=Button(f2,height=7,width=2,command=lambda:audio("A"))
 a.grid(row=2,column=6)
-
-b=Button(f2,text="b",command=lambda:audio("B"))
+#b
+b=Button(f2,height=7,width=2,command=lambda:audio("B"))
 b.grid(row=2,column=7)
-b_flat=Button(f2,text="bb",command=lambda:audioo("Bb"))
-b_flat.grid(row=1,column=6,columnspan=2)
 
-
-
-c_octave_1=Button(f2,text="c1",command=lambda:audio("C1"))
+#c1
+c_octave_1=Button(f2,height=7,width=2,command=lambda:audio("C1"))
 c_octave_1.grid(row=2,column=8)
-c_sharp_octave_1=Button(f2,text="cs1",command=lambda:audio("CS1"))
-c_sharp_octave_1.grid(row=1,column=8,columnspan=2)
-
-d_octave_1=Button(f2,text="d1",command=lambda:audio("D1"))
+#d1
+d_octave_1=Button(f2,height=7,width=2,command=lambda:audio("D1"))
 d_octave_1.grid(row=2,column=9)
-d_sharp_octave_1=Button(f2,text="ds1",command=lambda:audio("DS1"))
-d_sharp_octave_1.grid(row=1,column=9,columnspan=2)
-
-e_octave_1=Button(f2,text="e1",command=lambda:audio("E1"))
+#e1
+e_octave_1=Button(f2,height=7,width=2,command=lambda:audio("E1"))
 e_octave_1.grid(row=2,column=10)
-
-f_octave_1=Button(f2,text="f1",command=lambda:audio("F1"))
+#f1
+f_octave_1=Button(f2,height=7,width=2,command=lambda:audio("F1"))
 f_octave_1.grid(row=2,column=11)
 
 
+
+#cs
+c_sharp=Button(f2,height=5,width=1,highlightbackground="black",command=lambda:audio("CS"))
+c_sharp.grid(row=1,column=1,columnspan=2,rowspan=2)
+#ds
+d_sharp=Button(f2,height=5,width=1,highlightbackground="black",command=lambda:audio("DS"))
+d_sharp.grid(row=1,column=2,columnspan=2,rowspan=2)
+
+#fs
+f_sharp=Button(f2,height=5,width=1,highlightbackground="black",command=lambda:audio("FS"))
+f_sharp.grid(row=1,column=4,columnspan=2,rowspan=2)
+#gs
+g_sharp=Button(f2,height=5,width=1,highlightbackground="black",command=lambda:audio("GS"))
+g_sharp.grid(row=1,column=5,columnspan=2,rowspan=2)
+#as
+a_sharp=Button(f2,height=5,width=1,highlightbackground="black",command=lambda:audioo("Bb"))
+a_sharp.grid(row=1,column=6,columnspan=2,rowspan=2)
+
+#cs1
+c_sharp_octave_1=Button(f2,height=5,width=1,highlightbackground="black",command=lambda:audio("CS1"))
+c_sharp_octave_1.grid(row=1,column=8,columnspan=2,rowspan=2)
+#ds1
+d_sharp_octave_1=Button(f2,height=5,width=1,highlightbackground="black",command=lambda:audio("DS1"))
+d_sharp_octave_1.grid(row=1,column=9,columnspan=2,rowspan=2)
 
 w.mainloop()
